@@ -1,3 +1,4 @@
 .chalice/config.json
 .chalice/deployed/dev.json
+.chalice/deployments/*.zip
 .chalice/venv/

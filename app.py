@@ -33,8 +33,8 @@ Client = tweepy.Client(bearer_token=BEARER_TOKEN, consumer_key=CONSUMER_KEY,
 BUCKET_NAME = os.environ.get('BUCKET_NAME')
 # OBJECT_KEY_NAME = os.environ.get('OBJECT_KEY_NAME')
 
-LAST_TW_FILE = os.path.dirname(os.path.abspath(__file__)) + '/last_tw_id.pkl'
-NOTICED_SPACE_FILE = os.path.dirname(os.path.abspath(__file__)) + '/noticed_space_id.pkl'
+LAST_TW_FILE =  os.environ.get('BUCKET_NAME')
+NOTICED_SPACE_FILE =  os.environ.get('BUCKET_NAME')
 # # ###############################################################################
 expansions_4search = ['invited_user_ids', 'speaker_ids', 'creator_id', 'host_ids']
 
@@ -79,9 +79,10 @@ def Main(event):
                     message = f"<Twitter Space>\n\n{title}\n\nスペース展開中です!\n#ホロスペース\n\nhttps://twitter.com/i/spaces/{id}"
                     tw_result = Client.create_tweet(text=message, 
                                                     in_reply_to_tweet_id=last_tw_id if last_tw_id else None)
+                    pkl_by_bot3.write_pkl(tw_result[0]['id'], 'for-Twitter-Space-NoticeBot/last_tw_id.pkl')
                     # TODO: 通知積みidを追記する
-                    pkl_by_bot3.postscript_pkl(id, 'for-Twitter-Space-NoticeBot/noticed_space_id.pkl', notices)
-                    pkl_by_bot3.pwrite_pkl(tw_result[0]['id'], 'for-Twitter-Space-NoticeBot/last_tw_id.pkl')
+                    noticed_space_ids = pkl_by_bot3.read_pkl('for-Twitter-Space-NoticeBot/noticed_space_id.pkl')
+                    pkl_by_bot3.postscript_pkl(id, 'for-Twitter-Space-NoticeBot/noticed_space_id.pkl', noticed_space_ids)
                 except EOFError as err:
                     print(f'EOFError on load pickle file: {err}')
                 time.sleep(1)

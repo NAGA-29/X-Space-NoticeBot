@@ -33,13 +33,13 @@ class PKL_BY_BOT3:
             return False
 
     def write_pkl(self, data, object_key_name):
-        pickle_byte_obj = pickle.dump(data)
+        pickle_byte_obj = pickle.dumps(data)
         s3_object = self.get_s3object(object_key_name)
         s3_object.put(Body=pickle_byte_obj)
         
     def postscript_pkl(self, data, object_key_name, noticed_space_id: list):
         noticed_space_id.append(data)
-        pickle_byte_obj = pickle.dump(noticed_space_id)
+        pickle_byte_obj = pickle.dumps(noticed_space_id)
         s3_object = self.get_s3object(object_key_name)
         s3_object.put(Body=pickle_byte_obj)
 
