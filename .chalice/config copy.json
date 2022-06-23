@@ -1,0 +1,20 @@
+{
+  "version": "2.0",
+  "app_name": "Twitter-Space-NoticeBot",
+  "stages": {
+    "dev": {
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "CHATWORK_ROOM": "**********",
+        "CHATWORK_APIKEY": "*********************************",
+        "CONSUMER_KEY" : "*********************************",
+        "CONSUMER_SECRET" : "*********************************",
+        "ACCESS_TOKEN" : "*********************************",
+        "ACCESS_TOKEN_SECRET" : "*********************************",
+        "BEARER_TOKEN" : "*********************************",
+        "BUCKET_NAME": "python-get-object-XXXX",
+        "OBJECT_KEY_VALUE": "hello.json"
+      }
+    }
+  }
+}
