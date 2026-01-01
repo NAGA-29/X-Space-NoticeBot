@@ -1,4 +1,4 @@
-# Twitter Space 通知Bot
+# X(Twitter) Space 通知Bot
 
 これは、指定したTwitterユーザーリストが開始したTwitter Spaceを監視し、新しいSpaceが開始された際に自動でツイートして通知するBotです。AWS Chaliceフレームワークを使用して構築されており、AWS Lambda上で定期的に実行されます。
 
